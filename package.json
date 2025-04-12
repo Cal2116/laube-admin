@@ -1,8 +1,11 @@
 {
-  "name": "laube-admin-react",
+  "name": "laube-admin",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev:server": "pnpm --filter @laube-admin/server start:dev",
+    "dev:admin": "pnpm --filter @laube-admin/admin dev",
+    "build:common": "pnpm --filter @laube-admin/common build",
     "lint": "eslint",
     "lint:style": "stylelint",
     "lint:staged": "lint-staged",

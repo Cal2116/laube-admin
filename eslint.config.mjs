@@ -19,7 +19,7 @@ const ignores = [
 ]
 
 const frontendMonitorConfig = {
-  files: ['apps/frontend/monitor/**/*.{ts,tsx}'],
+  files: ['packages/admin/**/*.{ts,tsx}'],
   languageOptions: {
     ecmaVersion: 2020,
     globals: globals.browser,
@@ -36,7 +36,7 @@ const frontendMonitorConfig = {
 }
 
 const backendMonitorConfig = {
-  files: ['apps/backend/**/*.ts'],
+  files: ['packages/server/**/*.ts'],
   languageOptions: {
     globals: {
       ...globals.node,
