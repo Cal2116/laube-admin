@@ -20,6 +20,6 @@
     "**/package.json",
     "**/*.md",
     "eslint.config.js",
-    "packages/browser-utils/src/metrics/**/*"
+    "packages/server/prisma/client/mysql"
   ]
 }

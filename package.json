@@ -12,7 +12,8 @@
     "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
     "prepare": "husky",
     "docker:start": "docker compose -f .devcontainer/docker-compose.yml up -d",
-    "docker:stop": "docker compose -f .devcontainer/docker-compose.yml down"
+    "docker:stop": "docker compose -f .devcontainer/docker-compose.yml down",
+    "server:prisma:link": "pnpm --filter @laube-admin/server prisma:link"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,2 @@
+# 忽略 Prisma 生成的客户端代码
+packages/server/prisma/client/mysql 
