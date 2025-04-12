@@ -28,8 +28,5 @@ dist-ssr
 .cspellcache
 .eslintcache
 
-
-.turbo
-
-.devcontainer/data
-.devcontainer/postgresql_data
+.devcontainer/*
+!.devcontainer/docker-compose.yml

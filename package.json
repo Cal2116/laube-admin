@@ -10,7 +10,9 @@
     "lint:style": "stylelint",
     "lint:staged": "lint-staged",
     "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:start": "docker compose -f .devcontainer/docker-compose.yml up -d",
+    "docker:stop": "docker compose -f .devcontainer/docker-compose.yml down"
   },
   "keywords": [],
   "author": "",
@@ -32,19 +34,23 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "22.7.5",
-    "eslint": "9.14.0",
     "@eslint/js": "9.14.0",
-    "globals": "15.10.0",
-    "typescript": "5.5.3",
-    "typescript-eslint": "8.8.1",
-    "eslint-plugin-react-refresh": "0.4.19",
-    "eslint-plugin-react-hooks": "5.1.0",
-    "eslint-plugin-prettier": "5.2.6",
-    "eslint-plugin-simple-import-sort": "12.1.1",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "22.7.5",
     "cspell": "8.14.4",
+    "eslint": "9.14.0",
+    "eslint-plugin-prettier": "5.2.6",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "eslint-plugin-simple-import-sort": "12.1.1",
+    "globals": "15.10.0",
+    "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "prettier": "3.5.3",
-    "husky": "9.1.6"
+    "typescript": "5.5.3",
+    "typescript-eslint": "8.8.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
