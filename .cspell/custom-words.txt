@@ -3,6 +3,7 @@ dbtype
 eslintcache
 INITDB
 Laube
+maxsize
 njsproj
 ntvs
 requirepass
