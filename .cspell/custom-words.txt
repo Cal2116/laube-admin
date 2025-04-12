@@ -1,1 +1,7 @@
+appendonly
+eslintcache
+INITDB
 Laube
+njsproj
+ntvs
+requirepass
