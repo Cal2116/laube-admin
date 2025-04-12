@@ -19,6 +19,7 @@
     "**/language.ts",
     "**/package.json",
     "**/*.md",
+    "**/*.yaml",
     "eslint.config.js",
     "packages/server/prisma/client/mysql"
   ]
