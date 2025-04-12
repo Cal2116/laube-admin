@@ -52,11 +52,19 @@ export class PrismaQueryBuilder<T> {
   }
 
   addIn(field: string, values: any[]): this {
-    return this.addCondition(field, { in: values }, values !== undefined && values !== null && values.length > 0)
+    return this.addCondition(
+      field,
+      { in: values },
+      values !== undefined && values !== null && values.length > 0
+    )
   }
 
   addNotIn(field: string, values: any[]): this {
-    return this.addCondition(field, { notIn: values }, values !== undefined && values !== null && values.length > 0)
+    return this.addCondition(
+      field,
+      { notIn: values },
+      values !== undefined && values !== null && values.length > 0
+    )
   }
 
   addGt(field: string, value: any): this {

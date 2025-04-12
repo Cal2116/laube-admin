@@ -1,4 +1,13 @@
-import { IsArray, IsEmail, IsIn, IsNotEmpty, IsNumber, IsPhone, IsString, Length } from '@core/decorators'
+import {
+  IsArray,
+  IsEmail,
+  IsIn,
+  IsNotEmpty,
+  IsNumber,
+  IsPhone,
+  IsString,
+  Length,
+} from '@core/decorators'
 import { IsOptional } from 'class-validator'
 
 export class CreateUserDto {

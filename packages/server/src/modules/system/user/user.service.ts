@@ -55,7 +55,13 @@ export class UserService {
       },
     })
 
-    const permissionCodes = [...new Set(user.flatMap(user => user.roles.flatMap(role => role.role.menus.map(menu => menu.menu.authCode))))]
+    const permissionCodes = [
+      ...new Set(
+        user.flatMap(user =>
+          user.roles.flatMap(role => role.role.menus.map(menu => menu.menu.authCode))
+        )
+      ),
+    ]
 
     return permissionCodes
   }

@@ -37,7 +37,8 @@ const accumulateMetadata = (key: string, permissions: string[]) => {
 
 export const PERMISSION_KEY = 'permission'
 
-export const Permission = (...permissions: string[]) => accumulateMetadata(PERMISSION_KEY, permissions)
+export const Permission = (...permissions: string[]) =>
+  accumulateMetadata(PERMISSION_KEY, permissions)
 
 export const Create = () => Permission(PermissionActions.CREATE.toLocaleLowerCase())
 export const Read = () => Permission(PermissionActions.READ.toLocaleLowerCase())

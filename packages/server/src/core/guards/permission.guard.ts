@@ -98,7 +98,8 @@ export class PermissionGuard implements CanActivate {
   private getPermissionCodeList(context: ExecutionContext) {
     const classPermissions = this.reflector.get<string[]>(PERMISSION_KEY, context.getClass()) || []
 
-    const handlerPermission = this.reflector.get<string[]>(PERMISSION_KEY, context.getHandler()) || []
+    const handlerPermission =
+      this.reflector.get<string[]>(PERMISSION_KEY, context.getHandler()) || []
 
     const permissionCodeList = classPermissions.flatMap(classPermission =>
       handlerPermission.map(handlerPerm => `${classPermission}:${handlerPerm}`)

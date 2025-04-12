@@ -1,9 +1,21 @@
-import { DynamicModule, Global, Logger, Module, OnApplicationShutdown, Provider, Type } from '@nestjs/common'
+import {
+  DynamicModule,
+  Global,
+  Logger,
+  Module,
+  OnApplicationShutdown,
+  Provider,
+  Type,
+} from '@nestjs/common'
 import { PrismaClient } from 'prisma-mysql'
 import { catchError, defer, lastValueFrom, throwError } from 'rxjs'
 
 import { PRISMA_CONNECTION_NAME, PRISMA_MODULE_OPTIONS } from './prisma.constant'
-import { PrismaModuleAsyncOptions, PrismaModuleOptions, PrismaOptionsFactory } from './prisma.interface'
+import {
+  PrismaModuleAsyncOptions,
+  PrismaModuleOptions,
+  PrismaOptionsFactory,
+} from './prisma.interface'
 import { getDbType, getPrismaClient, retryConnect } from './prisma.utils'
 
 @Global()
@@ -28,7 +40,15 @@ export class PrismaCoreModule implements OnApplicationShutdown {
   static forRoot(_options: PrismaModuleOptions): DynamicModule {
     const logger = new Logger('Prisma')
 
-    const { url, providerName, retryAttempts = 3, retryDelay = 3000, options = {}, connectionFactory, connectionErrorFactory } = _options
+    const {
+      url,
+      providerName,
+      retryAttempts = 3,
+      retryDelay = 3000,
+      options = {},
+      connectionFactory,
+      connectionErrorFactory,
+    } = _options
 
     const datasourceUrl = options?.datasourceUrl || url
 
@@ -43,7 +63,8 @@ export class PrismaCoreModule implements OnApplicationShutdown {
 
     const prismaProviderName = providerName || PRISMA_CONNECTION_NAME
 
-    const prismaConnectionFactory = connectionFactory || (connectionOptions => new _prismaClient(connectionOptions))
+    const prismaConnectionFactory =
+      connectionFactory || (connectionOptions => new _prismaClient(connectionOptions))
 
     const prismaConnectionErrorFactory = connectionErrorFactory || (error => error)
 
@@ -102,7 +123,8 @@ export class PrismaCoreModule implements OnApplicationShutdown {
           throw new Error(`不支持的数据库类型: ${dbtype}`)
         }
 
-        const prismaConnectionFactory = connectionFactory || (connectionOptions => new _prismaClient(connectionOptions))
+        const prismaConnectionFactory =
+          connectionFactory || (connectionOptions => new _prismaClient(connectionOptions))
 
         const prismaConnectionErrorFactory = connectionErrorFactory || (error => error)
 
@@ -157,7 +179,8 @@ export class PrismaCoreModule implements OnApplicationShutdown {
       {
         provide: PRISMA_MODULE_OPTIONS,
         inject,
-        useFactory: async (optionsFactory: PrismaOptionsFactory) => optionsFactory.createPrismaModuleOptions(),
+        useFactory: async (optionsFactory: PrismaOptionsFactory) =>
+          optionsFactory.createPrismaModuleOptions(),
       },
       {
         provide: useClass,

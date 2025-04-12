@@ -64,7 +64,10 @@ export class MenuService {
 
   async createMenu(createMenuDto: CreateMenuDto) {
     if (createMenuDto.name) {
-      const isNameExists = await this.getMenuByNameAndParentId(createMenuDto.name, createMenuDto.parentId)
+      const isNameExists = await this.getMenuByNameAndParentId(
+        createMenuDto.name,
+        createMenuDto.parentId
+      )
 
       if (isNameExists) {
         throw new BadRequestException('菜单名称已存在')
@@ -91,7 +94,10 @@ export class MenuService {
 
   async updateMenu(id: string, updateMenuDto: UpdateMenuDto) {
     if (updateMenuDto.name) {
-      const isNameExists = await this.getMenuByNameAndParentId(updateMenuDto.name, updateMenuDto.parentId)
+      const isNameExists = await this.getMenuByNameAndParentId(
+        updateMenuDto.name,
+        updateMenuDto.parentId
+      )
 
       if (isNameExists.id !== id) {
         throw new BadRequestException('菜单名称已存在')
@@ -118,7 +124,9 @@ export class MenuService {
   }
 
   private async getMenuByNameAndParentId(name: string, parentId?: string) {
-    const queryBuilder = new PrismaQueryBuilder<Prisma.MenuWhereInput>().addEquals('name', name).addEquals('status', 1)
+    const queryBuilder = new PrismaQueryBuilder<Prisma.MenuWhereInput>()
+      .addEquals('name', name)
+      .addEquals('status', 1)
 
     if (parentId) {
       queryBuilder.addEquals('parentId', parentId)
