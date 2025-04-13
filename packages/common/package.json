@@ -15,12 +15,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "dev": "nodemon --watch src --ext ts --exec 'pnpm build'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.9",
     "unbuild": "^3.5.0"
   }
 }
