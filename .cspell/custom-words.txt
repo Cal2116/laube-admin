@@ -1,6 +1,7 @@
 appendonly
 dbtype
 eslintcache
+imgs
 INITDB
 Laube
 maxsize

@@ -2,6 +2,7 @@ import { PRISMA_CONNECTION_NAME } from '@core/prisma/prisma.constant'
 import { convertToInstance } from '@core/utils/convert.util'
 import { PrismaQueryBuilder } from '@core/utils/query-builder.util'
 import Snowflake from '@core/utils/snow-flake.util'
+import { EnableStatus } from '@laube-admin/common'
 import { Inject, Injectable } from '@nestjs/common'
 import * as argon2 from 'argon2'
 import { Prisma, PrismaClient } from 'prisma-mysql'
@@ -37,6 +38,7 @@ export class UserService {
     const user = await this.prisma.user.findMany({
       where: {
         id: userId,
+        status: EnableStatus.ENABLE,
       },
       include: {
         roles: {
@@ -68,7 +70,7 @@ export class UserService {
 
   async getUserByUsername(username: string) {
     const user = await this.prisma.user.findUnique({
-      where: { username },
+      where: { username, status: EnableStatus.ENABLE },
     })
 
     return user
@@ -76,7 +78,7 @@ export class UserService {
 
   async getUserById(id: string) {
     const user = await this.prisma.user.findUnique({
-      where: { id },
+      where: { id, status: EnableStatus.ENABLE },
       include: {
         roles: true,
       },
@@ -140,9 +142,6 @@ export class UserService {
       where,
       include: {
         roles: true,
-      },
-      orderBy: {
-        createdAt: 'desc',
       },
       skip: (page - 1) * pageSize,
       take: pageSize,

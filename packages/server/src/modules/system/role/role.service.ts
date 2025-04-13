@@ -26,9 +26,6 @@ export class RoleService {
 
     const roles = await this.prisma.role.findMany({
       where,
-      orderBy: {
-        createdAt: 'desc',
-      },
       skip: (page - 1) * pageSize,
       take: pageSize,
     })

@@ -1,5 +1,6 @@
-import { LoginRequest } from '@laube-admin/common'
+import { LoginRequest, LoginResponse } from '@laube-admin/common'
 
 import { request } from '@/utils'
 
-export const login = (data: LoginRequest) => request.post('/auth/login', data)
+export const login = (data: LoginRequest): Promise<LoginResponse> =>
+  request.post('/auth/login', data)
