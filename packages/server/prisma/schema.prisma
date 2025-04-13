@@ -17,8 +17,6 @@ model User {
   email     String?  @db.VarChar(100)
   status    Int      @default(1) @db.TinyInt()
   remark    String?  @db.VarChar(255)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
 
   roles UserRole[]
 
@@ -30,8 +28,6 @@ model Role {
   name        String   @unique @db.VarChar(50)
   description String?  @db.VarChar(255)
   status      Int      @default(1) @db.TinyInt()
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
 
   users UserRole[]
   menus RoleMenu[]
@@ -61,8 +57,6 @@ model Menu {
   order     Int      @default(0)
   status    Int      @default(1) @db.TinyInt()
   meta      Json?
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
 
   roles RoleMenu[]
 

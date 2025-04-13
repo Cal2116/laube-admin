@@ -22,6 +22,7 @@
     "**/*.yaml",
     "eslint.config.js",
     ".editorconfig",
+    ".env.*",
     "packages/server/prisma/client/mysql"
   ]
 }

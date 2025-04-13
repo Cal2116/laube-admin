@@ -29,6 +29,7 @@ request.interceptors.response.use(
     return Promise.reject(responseShell)
   },
   error => {
+    message.error('服务器内部错误，请联系管理员')
     return Promise.reject(error)
   }
 )
