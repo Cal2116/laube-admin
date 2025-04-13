@@ -1,4 +1,4 @@
-import { ResultCode, ResultMessage } from '@laube-admin/common'
+import { ResponseCode, ResponseMessage, ResponseShell } from '@laube-admin/common'
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common'
 import { catchError, map, Observable } from 'rxjs'
 
@@ -17,9 +17,9 @@ export class ResponseInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       map(async data => {
-        const resultData = {
-          code: ResultCode.SUCCESS,
-          message: ResultMessage.SUCCESS,
+        const resultData: ResponseShell = {
+          code: ResponseCode.SUCCESS,
+          message: ResponseMessage.SUCCESS,
           data,
         }
 

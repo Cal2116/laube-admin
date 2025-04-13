@@ -1,4 +1,4 @@
-import { ResultCode } from '@laube-admin/common'
+import { ResponseCode } from '@laube-admin/common'
 import {
   ArgumentsHost,
   Catch,
@@ -14,7 +14,7 @@ export class ExceptionFilter implements NestExceptionFilter {
     const message = (exception.getResponse() as any).message
 
     response.status(200).json({
-      code: ResultCode.ERROR,
+      code: ResponseCode.ERROR,
       message,
       data: null,
     })

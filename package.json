@@ -5,6 +5,7 @@
   "scripts": {
     "dev:server": "pnpm --filter @laube-admin/server start:dev",
     "dev:admin": "pnpm --filter @laube-admin/admin dev",
+    "dev:common": "pnpm --filter @laube-admin/common dev",
     "build:common": "pnpm --filter @laube-admin/common build",
     "lint": "eslint",
     "lint:style": "stylelint",

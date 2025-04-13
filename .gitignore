@@ -22,9 +22,10 @@ dist-ssr
 *.sln
 *.sw?
 
-
 .cspellcache
 .eslintcache
 
 .devcontainer/*
 !.devcontainer/docker-compose.yml
+
+packages/server/prisma/client
