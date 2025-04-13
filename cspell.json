@@ -21,6 +21,7 @@
     "**/*.md",
     "**/*.yaml",
     "eslint.config.js",
+    ".editorconfig",
     "packages/server/prisma/client/mysql"
   ]
 }
