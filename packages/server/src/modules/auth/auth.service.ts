@@ -1,3 +1,4 @@
+import { LoginResponse } from '@laube-admin/common'
 import { UserService } from '@modules/system/user/user.service'
 import { BadRequestException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
@@ -12,7 +13,11 @@ export class AuthService {
     private userService: UserService
   ) {}
 
-  async login(loginDto: LoginDTO) {
+  async getPassword() {
+    return argon2.hash('123456')
+  }
+
+  async login(loginDto: LoginDTO): Promise<LoginResponse> {
     const user = await this.userService.getUserByUsername(loginDto.username)
 
     if (!user) {

@@ -1,10 +1,10 @@
+import { ResponseInterceptor } from '@core/interceptors/response.interceptor'
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston'
 
 import { AppModule } from './app.module'
 import { ExceptionFilter } from './core/filter/exception.filter'
-import { ResponseInterceptor } from './core/interceptors/response.interceptor'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)

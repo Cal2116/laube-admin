@@ -1,4 +1,3 @@
-import { Result } from '@core/decorators'
 import { Body, Controller, Get, Post, Req } from '@nestjs/common'
 
 import { AuthService } from './auth.service'
@@ -8,14 +7,17 @@ import { LoginDTO } from './dto/login.dto'
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Get('password')
+  getPassword() {
+    return this.authService.getPassword()
+  }
+
   @Post('login')
-  @Result()
   login(@Body() loginDto: LoginDTO) {
     return this.authService.login(loginDto)
   }
 
   @Get('codes')
-  @Result()
   getUserPermissionCodes(@Req() req: any) {
     const { userId } = req.user
 
