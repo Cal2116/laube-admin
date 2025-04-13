@@ -2,11 +2,6 @@ import { ResponseCode, ResponseMessage, ResponseShell } from '@laube-admin/commo
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common'
 import { catchError, map, Observable } from 'rxjs'
 
-/**
- * API 成功拦截器
- *
- * @description 用于序列化接口返回值
- */
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
   constructor(private dto?: any) {}

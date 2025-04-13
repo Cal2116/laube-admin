@@ -23,9 +23,6 @@ import { getDbType, getPrismaClient, retryConnect } from './prisma.utils'
 export class PrismaCoreModule implements OnApplicationShutdown {
   private static connections: Record<string, PrismaClient> = {}
 
-  /**
-   * 应用关闭时关闭所有 Prisma Client
-   */
   onApplicationShutdown() {
     if (PrismaCoreModule.connections && Object.keys(PrismaCoreModule.connections).length > 0) {
       Object.values(PrismaCoreModule.connections).forEach(client => {
@@ -34,9 +31,6 @@ export class PrismaCoreModule implements OnApplicationShutdown {
     }
   }
 
-  /**
-   * 同步注册 Prisma Client
-   */
   static forRoot(_options: PrismaModuleOptions): DynamicModule {
     const logger = new Logger('Prisma')
 
@@ -156,11 +150,6 @@ export class PrismaCoreModule implements OnApplicationShutdown {
     }
   }
 
-  /**
-   * 判断使用 useFactory 还是 useClass 创建 PrismaClient
-   * useFactory 与 useClass 都是用来获取数据库链接信息的工具函数
-   * 最终都需要返回包含数据库链接信息的对象
-   */
   private static createAsyncOptionsProvider(_options: PrismaModuleAsyncOptions): Provider[] {
     if (_options.useFactory) {
       return [

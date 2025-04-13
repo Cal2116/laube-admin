@@ -76,13 +76,6 @@ export class PermissionGuard implements CanActivate {
     return hasWhiteList
   }
 
-  /**
-   * 检查用户是否具有接口访问权限
-   *
-   * @description 获取接口 class 与 handler 的权限注解
-   * 查询当前JWT中用户信息, 获取权限
-   * 判断权限是否具有接口访问权限
-   */
   private async checkPermission(permissionCodeList: string[], userId: string) {
     const userPermissionCodes = await this.userService.getUserPermissionCodes(userId)
 

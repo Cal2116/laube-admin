@@ -5,11 +5,6 @@ import { Reflector } from '@nestjs/core'
 import { AuthGuard } from '@nestjs/passport'
 import { Observable } from 'rxjs'
 
-/**
- * JWT 认证守卫
- *
- * @description 用于验证 JWT 令牌
- */
 @Injectable()
 export class JwtGuard extends AuthGuard('auth') {
   constructor(

@@ -13,9 +13,6 @@ import { PrismaDefaultService } from './prisma-default.service'
  */
 @Module({})
 export class PrismaModule {
-  /**
-   * 同步注册 Prisma Client
-   */
   static forRoot(url: string, providerName?: string): DynamicModule
   static forRoot(arg: any, ...args: any[]): DynamicModule {
     if (typeof arg === 'string') {
@@ -28,10 +25,6 @@ export class PrismaModule {
     return PrismaCoreModule.forRoot(arg)
   }
 
-  /**
-   * 异步注册 Prisma Client
-   * 如果 options 为空，则使用 PrismaDefaultService 创建 PrismaClient
-   */
   static forRootAsync(options?: PrismaModuleAsyncOptions): DynamicModule {
     let _options: PrismaModuleAsyncOptions
     if (!options) {

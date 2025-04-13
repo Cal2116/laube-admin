@@ -3,9 +3,6 @@ import { ConfigService } from '@nestjs/config'
 
 import { PrismaModuleOptions, PrismaOptionsFactory } from './prisma.interface'
 
-/**
- * 默认的 Prisma 链接工厂
- */
 @Injectable()
 export class PrismaDefaultService implements PrismaOptionsFactory {
   constructor(private readonly configService: ConfigService) {}

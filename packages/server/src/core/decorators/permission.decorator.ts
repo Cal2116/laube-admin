@@ -8,11 +8,6 @@ const enum PermissionActions {
   DELETE = 'delete',
 }
 
-/**
- * 权限装饰器
- *
- * @description 用于标记接口权限
- */
 const accumulateMetadata = (key: string, permissions: string[]) => {
   return (target: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) => {
     const reflector = new Reflector()
