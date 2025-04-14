@@ -8,3 +8,4 @@ maxsize
 njsproj
 ntvs
 requirepass
+Sider

@@ -1,5 +1,6 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
+import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Welcome from '@/views/Welcome'
 
@@ -10,7 +11,16 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <Welcome />,
+    element: <Navigate to="/welcome" />,
+  },
+  {
+    element: <Home />,
+    children: [
+      {
+        path: '/welcome',
+        element: <Welcome />,
+      },
+    ],
   },
 ])
 
