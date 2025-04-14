@@ -36,7 +36,7 @@ export default function Login() {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p className="text-center text-3xl">Welcome.</p>
+            <p className="text-center text-3xl">欢迎登录</p>
 
             <Form
               onFinish={handleFormSubmit}
@@ -46,23 +46,23 @@ export default function Login() {
             >
               <Form.Item<LoginForm>
                 name="username"
-                label="Username"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                label="用户名"
+                rules={[{ required: true, message: '请输入用户名!' }]}
               >
-                <Input placeholder="username" />
+                <Input placeholder="请输入用户名" />
               </Form.Item>
 
               <Form.Item<LoginForm>
                 name="password"
-                label="Password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                label="密码"
+                rules={[{ required: true, message: '请输入密码!' }]}
               >
-                <Input.Password placeholder="password" />
+                <Input.Password placeholder="请输入密码" />
               </Form.Item>
 
               <Form.Item label={null} wrapperCol={{ offset: 4, span: 20 }}>
                 <Button type="primary" htmlType="submit" block loading={isLoading}>
-                  Login
+                  登录
                 </Button>
               </Form.Item>
             </Form>
