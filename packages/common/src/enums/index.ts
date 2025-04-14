@@ -12,3 +12,7 @@ export enum EnableStatus {
   ENABLE = 1,
   DISABLE = 0,
 }
+
+export enum StorageKey {
+  ACCESS_TOKEN = 'accessToken',
+}

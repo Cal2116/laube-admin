@@ -1,3 +1,4 @@
+import { StorageKey } from '@laube-admin/common'
 import type { FormProps } from 'antd'
 import { Button, Form, Input } from 'antd'
 import { useState } from 'react'
@@ -24,7 +25,7 @@ export default function Login() {
       const res = await login(values)
       const { accessToken } = res
 
-      setStorageValue('accessToken', accessToken)
+      setStorageValue(StorageKey.ACCESS_TOKEN, accessToken)
       navigate('/')
     } finally {
       setIsLoading(false)

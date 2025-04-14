@@ -1,6 +1,8 @@
-import { ResponseCode, ResponseShell } from '@laube-admin/common'
+import { ResponseCode, ResponseShell, StorageKey } from '@laube-admin/common'
 import { message } from 'antd'
 import axios from 'axios'
+
+import { getStorageValue } from './storage'
 
 const request = axios.create({
   baseURL: '/api',
@@ -9,6 +11,10 @@ const request = axios.create({
 })
 
 request.interceptors.request.use(config => {
+  const token = getStorageValue(StorageKey.ACCESS_TOKEN)
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
   return config
 })
 
