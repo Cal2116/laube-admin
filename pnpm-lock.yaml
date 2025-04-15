@@ -63,9 +63,15 @@ importers:
 
   packages/admin:
     dependencies:
+      '@ant-design/icons':
+        specifier: 5.x
+        version: 5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@iconify/json':
         specifier: ^2.2.327
         version: 2.2.327
+      '@iconify/react':
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
       '@laube-admin/common':
         specifier: workspace:*
         version: link:../common
@@ -75,6 +81,9 @@ importers:
       axios:
         specifier: ^1.8.4
         version: 1.8.4
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       immer:
         specifier: ^10.1.1
         version: 10.1.1
@@ -930,6 +939,11 @@ packages:
 
   '@iconify/json@2.2.327':
     resolution: {integrity: sha512-G9LFSD3ZSNHj+0O98ZStkBOd543I05fomTep3DA8UyrreJRnsbjswAe8Ux9teHc/GE/alcCuaaxNqWyCTdN6PA==}
+
+  '@iconify/react@5.2.1':
+    resolution: {integrity: sha512-37GDR3fYDZmnmUn9RagyaX+zca24jfVOMY8E1IXTqJuE8pxNtN51KWPQe3VODOWvuUurq7q9uUu3CFrpqj5Iqg==}
+    peerDependencies:
+      react: '>=16'
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -6691,6 +6705,11 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
+
+  '@iconify/react@5.2.1(react@18.3.1)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      react: 18.3.1
 
   '@iconify/types@2.0.0': {}
 

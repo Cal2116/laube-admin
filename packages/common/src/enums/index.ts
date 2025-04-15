@@ -16,7 +16,6 @@ export enum EnableStatus {
 export enum StorageKey {
   ACCESS_TOKEN = 'accessToken',
   USER_INFO = 'userInfo',
-  MENU_TREE = 'menuTree',
 }
 
 export enum MenuType {

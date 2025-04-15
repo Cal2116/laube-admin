@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { login } from '@/api'
-import { getUserInfo } from '@/api/user'
 import loginBg from '@/assets/images/login-bg.jpg'
 import { setStorageValue } from '@/utils'
 
@@ -27,12 +26,6 @@ export default function Login() {
       const { accessToken } = tokenResponse
 
       setStorageValue(StorageKey.ACCESS_TOKEN, accessToken)
-
-      const userInfoResponse = await getUserInfo()
-      const { menuTree, ...userInfo } = userInfoResponse
-
-      setStorageValue(StorageKey.USER_INFO, userInfo)
-      setStorageValue(StorageKey.MENU_TREE, menuTree)
 
       navigate('/')
     } finally {

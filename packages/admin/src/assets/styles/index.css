@@ -1,6 +1,1 @@
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 @import 'tailwindcss';
-
-body {
-  font-family: 'Karla', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-}

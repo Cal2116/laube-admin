@@ -1,6 +1,7 @@
 appendonly
 dbtype
 eslintcache
+iconify
 imgs
 INITDB
 Laube
