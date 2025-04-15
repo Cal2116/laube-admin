@@ -4,10 +4,8 @@ import { MenuInfo } from './menu'
 export interface UserInfo {
   id: string
   username: string
-  nickname: string
-  avatar: string
-  email: string
-  phone: string
+  phone: string | null
+  email: string | null
   status: EnableStatus
 }
 

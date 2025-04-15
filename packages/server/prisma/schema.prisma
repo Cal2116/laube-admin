@@ -1,6 +1,6 @@
 datasource db {
   provider = "mysql"
-  url      = env("DB_URL")
+  url      = "mysql://root:123456@localhost:3306/laube-admin"
 }
 
 generator client {
@@ -56,7 +56,7 @@ model Menu {
   authCode  String?  @map("auth_code") @db.VarChar(50)
   order     Int      @default(0)
   status    Int      @default(1) @db.TinyInt()
-  meta      Json?
+  icon      String?  @db.VarChar(255)
 
   roles RoleMenu[]
 

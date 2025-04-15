@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { login } from '@/api'
+import { getUserInfo } from '@/api/user'
 import loginBg from '@/assets/images/login-bg.jpg'
 import { setStorageValue } from '@/utils'
 
@@ -22,10 +23,17 @@ export default function Login() {
     try {
       setIsLoading(true)
 
-      const res = await login(values)
-      const { accessToken } = res
+      const tokenResponse = await login(values)
+      const { accessToken } = tokenResponse
 
       setStorageValue(StorageKey.ACCESS_TOKEN, accessToken)
+
+      const userInfoResponse = await getUserInfo()
+      const { menuTree, ...userInfo } = userInfoResponse
+
+      setStorageValue(StorageKey.USER_INFO, userInfo)
+      setStorageValue(StorageKey.MENU_TREE, menuTree)
+
       navigate('/')
     } finally {
       setIsLoading(false)
@@ -62,7 +70,12 @@ export default function Login() {
               </Form.Item>
 
               <Form.Item label={null} wrapperCol={{ offset: 4, span: 20 }}>
-                <Button type="primary" htmlType="submit" block loading={isLoading}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  block
+                  loading={isLoading}
+                >
                   登录
                 </Button>
               </Form.Item>
@@ -71,7 +84,10 @@ export default function Login() {
         </div>
 
         <div className="w-1/2 shadow-2xl">
-          <img className="object-cover w-full h-screen hidden md:block" src={loginBg} />
+          <img
+            className="object-cover w-full h-screen hidden md:block"
+            src={loginBg}
+          />
         </div>
       </div>
     </div>

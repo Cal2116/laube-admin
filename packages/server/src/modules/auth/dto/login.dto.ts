@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from '@core/decorators'
-import { LoginRequest } from '@laube-admin/common'
-export class LoginDTO implements LoginRequest {
+import { LoginParams } from '@laube-admin/common'
+export class LoginDTO implements LoginParams {
   @IsNotEmpty('用户名')
   @IsString('用户名')
   username: string

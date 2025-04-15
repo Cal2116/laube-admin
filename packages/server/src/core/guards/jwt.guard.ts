@@ -14,9 +14,12 @@ export class JwtGuard extends AuthGuard('auth') {
     super()
   }
 
-  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
+  canActivate(
+    context: ExecutionContext
+  ): boolean | Promise<boolean> | Observable<boolean> {
     // 判断是否为开发环境
     const isPassAll = this.isPassAll()
+
     if (isPassAll) {
       return true
     }
@@ -43,7 +46,10 @@ export class JwtGuard extends AuthGuard('auth') {
   }
 
   private isApiWhiteList(context: ExecutionContext): boolean {
-    const apiWhiteList = this.configService.get<string[]>('JWT_API_WHITE_LIST', [])
+    const apiWhiteList = this.configService.get<string[]>(
+      'JWT_API_WHITE_LIST',
+      []
+    )
 
     if (!apiWhiteList) return false
 
@@ -56,7 +62,10 @@ export class JwtGuard extends AuthGuard('auth') {
   private isPassAll(): boolean {
     const nodeEnv = process.env.NODE_ENV
 
-    const apiWhiteList = this.configService.get<string[]>('JWT_API_WHITE_LIST', [])
+    const apiWhiteList = this.configService.get<string[]>(
+      'JWT_API_WHITE_LIST',
+      []
+    )
 
     if (!apiWhiteList) return false
 

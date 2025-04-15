@@ -1,4 +1,4 @@
-import { LoginResponse } from '@laube-admin/common'
+import { LoginResult } from '@laube-admin/common'
 import { UserService } from '@modules/system/user/user.service'
 import { BadRequestException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
@@ -13,18 +13,17 @@ export class AuthService {
     private userService: UserService
   ) {}
 
-  async getPassword() {
-    return argon2.hash('123456')
-  }
-
-  async login(loginDto: LoginDTO): Promise<LoginResponse> {
+  async login(loginDto: LoginDTO): Promise<LoginResult> {
     const user = await this.userService.getUserByUsername(loginDto.username)
 
     if (!user) {
       throw new BadRequestException('用户不存在')
     }
 
-    const isPasswordValid = await argon2.verify(user.password, loginDto.password)
+    const isPasswordValid = await argon2.verify(
+      user.password,
+      loginDto.password
+    )
 
     if (!isPasswordValid) {
       throw new BadRequestException('密码错误')
@@ -37,9 +36,5 @@ export class AuthService {
     return {
       accessToken: this.jwtService.sign(payload),
     }
-  }
-
-  async getUserPermissionCodes(userId: string) {
-    return this.userService.getUserPermissionCodes(userId)
   }
 }

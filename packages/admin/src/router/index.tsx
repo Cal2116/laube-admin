@@ -1,8 +1,7 @@
+import { lazy } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
-import Home from '@/views/Home'
 import Login from '@/views/Login'
-import Welcome from '@/views/Welcome'
 
 const router = createBrowserRouter([
   {
@@ -10,15 +9,15 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/',
-    element: <Navigate to="/welcome" />,
-  },
-  {
-    element: <Home />,
+    Component: lazy(() => import('@/views/Home')),
     children: [
       {
+        path: '/',
+        element: <Navigate to="/welcome" />,
+      },
+      {
         path: '/welcome',
-        element: <Welcome />,
+        Component: lazy(() => import('@/views/Welcome')),
       },
     ],
   },
