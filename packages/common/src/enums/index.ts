@@ -1,6 +1,7 @@
 export enum ResponseCode {
   SUCCESS = 200,
   ERROR = -1,
+  UNAUTHORIZED = -2,
 }
 
 export enum ResponseMessage {

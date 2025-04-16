@@ -2,7 +2,7 @@ import { ResponseCode, ResponseShell, StorageKey } from '@laube-admin/common'
 import { message } from 'antd'
 import axios from 'axios'
 
-import { getStorageValue } from './storage'
+import { clearStorage, getStorageValue } from './storage'
 
 const request = axios.create({
   baseURL: '/api',
@@ -29,6 +29,13 @@ request.interceptors.response.use(
 
     if (responseShell.code === ResponseCode.ERROR) {
       message.error(responseShell.message)
+      return Promise.reject(responseShell)
+    }
+
+    if (responseShell.code === ResponseCode.UNAUTHORIZED) {
+      message.error(responseShell.message)
+      clearStorage()
+      window.location.href = '/login'
       return Promise.reject(responseShell)
     }
 
