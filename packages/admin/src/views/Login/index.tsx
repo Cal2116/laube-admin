@@ -45,6 +45,10 @@ export default function Login() {
               labelCol={{ span: 4 }}
               wrapperCol={{ span: 20 }}
               autoComplete="off"
+              initialValues={{
+                username: 'admin',
+                password: '123456',
+              }}
             >
               <Form.Item<LoginForm>
                 name="username"

@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "dev": "nodemon --watch src --ext ts --exec 'pnpm build'"
+    "dev": "nodemon --watch src --ext ts --exec pnpm build"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,75 @@
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:123456@localhost:3306/laube-admin"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client/mysql"
+}
+
+model User {
+  id       String  @id @db.VarChar(20)
+  username String  @unique @db.VarChar(50)
+  password String  @db.VarChar(255)
+  realName String  @map("real_name") @db.VarChar(50)
+  phone    String? @db.VarChar(20)
+  email    String? @db.VarChar(100)
+  status   Int     @default(1) @db.TinyInt()
+  remark   String? @db.VarChar(255)
+
+  roles UserRole[]
+
+  @@map("user")
+}
+
+model Role {
+  id          String  @id @db.VarChar(20)
+  name        String  @unique @db.VarChar(50)
+  description String? @db.VarChar(255)
+  status      Int     @default(1) @db.TinyInt()
+
+  users UserRole[]
+  menus RoleMenu[]
+
+  @@map("role")
+}
+
+model UserRole {
+  userId String @db.VarChar(20)
+  roleId String @db.VarChar(20)
+
+  user User @relation(fields: [userId], references: [id])
+  role Role @relation(fields: [roleId], references: [id])
+
+  @@id([userId, roleId])
+  @@map("user_role")
+}
+
+model Menu {
+  id        String  @id @db.VarChar(20)
+  type      String  @db.VarChar(20)
+  name      String? @db.VarChar(50)
+  parentId  String? @map("parent_id") @db.VarChar(20)
+  path      String? @db.VarChar(255)
+  component String? @db.VarChar(255)
+  authCode  String? @map("auth_code") @db.VarChar(50)
+  order     Int     @default(0)
+  status    Int     @default(1) @db.TinyInt()
+  icon      String? @db.VarChar(255)
+
+  roles RoleMenu[]
+
+  @@map("menu")
+}
+
+model RoleMenu {
+  roleId String @map("role_id") @db.VarChar(20)
+  menuId String @map("menu_id") @db.VarChar(20)
+
+  role Role @relation(fields: [roleId], references: [id])
+  menu Menu @relation(fields: [menuId], references: [id])
+
+  @@id([roleId, menuId])
+  @@map("role_menu")
+}

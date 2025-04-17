@@ -27,5 +27,3 @@ dist-ssr
 
 .devcontainer/*
 !.devcontainer/docker-compose.yml
-
-packages/server/prisma/client
