@@ -6,8 +6,10 @@ const { Sider } = Layout
 import classNames from 'classnames'
 
 import styles from './index.module.less'
+
 export default function LayoutSider() {
-  const { menuItems, openKeys, selectedKeys } = useLayoutSider()
+  const { menuItems, openKeys, selectedKeys, handleMenuSelect } =
+    useLayoutSider()
 
   return (
     <Sider
@@ -28,8 +30,11 @@ export default function LayoutSider() {
         mode="inline"
         theme="dark"
         items={menuItems}
-        defaultOpenKeys={openKeys}
-        defaultSelectedKeys={selectedKeys}
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
+        onSelect={e => {
+          handleMenuSelect(e.key)
+        }}
       />
     </Sider>
   )

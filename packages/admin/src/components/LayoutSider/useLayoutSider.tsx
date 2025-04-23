@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react'
 import { MenuInfo, MenuType } from '@laube-admin/common'
 import { MenuProps } from 'antd'
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useMenuStore } from '@/store/useMenuStore'
 
@@ -13,6 +13,7 @@ type MenuItem = Required<MenuProps>['items'][number] & {
 export const useLayoutSider = () => {
   const menus = useMenuStore(state => state.menus)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getMenuItems()
@@ -57,11 +58,21 @@ export const useLayoutSider = () => {
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
 
+  useEffect(() => {
+    const path = findMenuPath(menus, location.pathname)
+
+    if (path.length > 0) {
+      setSelectedKeys([path[path.length - 1]])
+      setOpenKeys(path.slice(0, -1))
+    }
+  }, [location.pathname, menus])
+
   const findMenuPath = (menus: MenuInfo[], targetPath: string): string[] => {
     for (const menu of menus) {
       if (menu.path === targetPath) {
-        return [menu.id]
+        return [menu.path]
       }
+
       if (menu.children && menu.children.length > 0) {
         const childPath = findMenuPath(menu.children, targetPath)
         if (childPath.length > 0) {
@@ -72,17 +83,14 @@ export const useLayoutSider = () => {
     return []
   }
 
-  useEffect(() => {
-    const path = findMenuPath(menus, location.pathname)
-    if (path.length > 0) {
-      setSelectedKeys([path[path.length - 1]])
-      setOpenKeys(path.slice(0, -1))
-    }
-  }, [location.pathname, menus])
+  const handleMenuSelect = (selectedKey: string) => {
+    navigate(selectedKey)
+  }
 
   return {
     menuItems,
     openKeys,
     selectedKeys,
+    handleMenuSelect,
   }
 }

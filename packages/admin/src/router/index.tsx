@@ -51,6 +51,18 @@ const router = createBrowserRouter([
         path: '/welcome',
         Component: lazy(() => import('@/views/Welcome')),
       },
+      {
+        path: '/system/user',
+        Component: lazy(() => import('@/views/SystemUser')),
+      },
+      {
+        path: '/system/role',
+        Component: lazy(() => import('@/views/SystemRole')),
+      },
+      {
+        path: '/system/menu',
+        Component: lazy(() => import('@/views/SystemMenu')),
+      },
     ],
   },
 ])
